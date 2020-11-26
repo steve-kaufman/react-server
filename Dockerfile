@@ -9,6 +9,8 @@ RUN go build -o server
 
 FROM alpine:latest
 
-COPY --from=builder /go/src/server/server /usr/bin
+ENV PATH=$PATH:/bin
+
+COPY --from=builder /go/src/server/server /bin
 
 EXPOSE 8080
